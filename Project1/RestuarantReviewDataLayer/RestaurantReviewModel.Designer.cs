@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\cleib\revature\leibow-cooper-project0\Project0V2\RestuarantReviewDataLayer\RestaurantReviewModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\cleib\revature\cooper-leibow-Project1\Project1\RestuarantReviewDataLayer\RestaurantReviewModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business_logic", "Business_
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data_layer", "Data_layer", "{A9BCD4C4-B6E9-4891-A810-9F7F3D126DA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestuarantReviewDataLayer", "RestuarantReviewDataLayer\RestuarantReviewDataLayer.csproj", "{47089F90-4650-476D-940D-4007F0EBF30C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantReviewDataLayer", "RestuarantReviewDataLayer\RestaurantReviewDataLayer.csproj", "{47089F90-4650-476D-940D-4007F0EBF30C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestRestaurantReview3", "UnitTestRestaurantReview3\UnitTestRestaurantReview3.csproj", "{D692761B-093A-420E-95C4-28A961ADDB36}"
 EndProject

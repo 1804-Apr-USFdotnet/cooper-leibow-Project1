@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestaurantLibrary.Models;
-using RestuarantReviewDataLayer;
+using RestaurantReviewDataLayer;
 using RestaurantLibrary.LibraryHelper;
 using NLog;
 
@@ -12,15 +12,17 @@ using NLog;
 
 namespace RestaurantLibrary.Models
 {
-    public static class RestaurantListMethods
+    public class RestaurantListMethods
     {
-        public static List<Restaurant> CreateRestaurantList(IEnumerable<RestuarantReviewDataLayer.Restaurant> restaurantList)
+        RestaurantLibrary.LibraryHelper.RestaurantHelper resHelper = new RestaurantLibrary.LibraryHelper.RestaurantHelper();
+
+        public  List<Restaurant> CreateRestaurantList(IEnumerable<RestaurantReviewDataLayer.Restaurant> restaurantList)
         {
             List<Restaurant> myList = new List<Restaurant>();
 
             foreach (var res in restaurantList)
             {
-                Restaurant libRes = LibraryHelper.RestaurantHelper.DataToLibrary(res);
+                Restaurant libRes = resHelper.DataToLibrary(res);
                 myList.Add(libRes);
             }
             return myList;
@@ -29,7 +31,7 @@ namespace RestaurantLibrary.Models
         
 
 
-        public static List<Restaurant> TopThree(List<Restaurant> restaurantList)
+        public  List<Restaurant> TopThree(List<Restaurant> restaurantList)
         {
             try
             {
@@ -47,14 +49,14 @@ namespace RestaurantLibrary.Models
             return restaurantList;
         }
 
-        public static List<Restaurant> SortByNameAscending(List<Restaurant> restaurantList)
+        public  List<Restaurant> SortByNameAscending(List<Restaurant> restaurantList)
         {
             List<Restaurant> SortedList = restaurantList.OrderBy(o => o.Name).ToList();
             return SortedList;
 
         }
 
-        public static List<Restaurant> SortByNameDescending(List<Restaurant> restaurantList)
+        public  List<Restaurant> SortByNameDescending(List<Restaurant> restaurantList)
         {
             List<Restaurant> SortedList = restaurantList.OrderBy(o => o.Name).Reverse().ToList();
             return SortedList;
@@ -62,7 +64,7 @@ namespace RestaurantLibrary.Models
 
         }
 
-        public static Restaurant GetRestaurantById(List<Restaurant> restaurantList, int ID)
+        public  Restaurant GetRestaurantById(List<Restaurant> restaurantList, int ID)
         {
             Restaurant res = restaurantList.Find(r => r.id == ID);
             return res;

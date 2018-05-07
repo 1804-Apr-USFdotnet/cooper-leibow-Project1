@@ -4,27 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestuarantReviewDataLayer
+namespace RestaurantReviewDataLayer
 {
     public class RestaurantCRUD
     {
-        //public async Task AddRestaurant(Restaurant res)
-        //{
-        //    using (var db = new RestaurantDBEntities())
-        //    {
-        //        db.Restaurants.Add(res);
-        //        await db.SaveChangesAsync();
-        //    }
-        //}
-
         private RestaurantDBEntities1 _db;
 
         public RestaurantCRUD()
         {
             _db = new RestaurantDBEntities1();
         }
-
-        public IEnumerable<Restaurant> GetAllRestaurant()
+        public List<Restaurant> GetAllRestaurant()
         {
             var list = _db.Restaurants.ToList();
             return list;
@@ -42,26 +32,16 @@ namespace RestuarantReviewDataLayer
             _db.SaveChanges();
         }
 
-        public void UpdateResById(int id, string column, string change)
+        public void UpdateRestaurantById(Restaurant res2)
         {
-            Restaurant res = _db.Restaurants.Find(id);
-            switch (column.ToLower())
-            {
-                case "name":
-                    res.Name = change;
-                    break;
-
-                case "location":
-                    res.location= change;
-                    break;
-
-                
-            }
+            Restaurant res1 = _db.Restaurants.Find(res2.ID);
+            res1.location = res2.location;
+            res1.Name = res2.Name;
             _db.SaveChanges();
 
         }
 
-        public void DeleteResById(int id)
+        public void DeleteRestaurantById(int id)
         {
             Restaurant res = _db.Restaurants.Find(id);
             _db.Restaurants.Remove(res);

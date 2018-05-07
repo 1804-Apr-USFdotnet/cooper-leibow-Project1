@@ -59,9 +59,9 @@
       <Project>{cda7cd6a-c1f0-4843-af2b-c8bc54e3c133}</Project>
       <Name>RestaurantReviewsLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RestuarantReviewDataLayer\RestuarantReviewDataLayer.csproj">
+    <ProjectReference Include="..\RestuarantReviewDataLayer\RestaurantReviewDataLayer.csproj">
       <Project>{47089f90-4650-476d-940d-4007f0ebf30c}</Project>
-      <Name>RestuarantReviewDataLayer</Name>
+      <Name>RestaurantReviewDataLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -13,15 +13,26 @@ namespace RestaurantLibrary.Models
         public string Location { get; set; }
         public List<Review> Reviewlist;
         public int id { get; set; } 
+        
         public decimal AverageRating { get
             {
-            decimal total = 0;
-                foreach (Review review in Reviewlist)
+                decimal total = 0;
+
+                if (this.Reviewlist == null)
                 {
-                    total += review.Rating;
+                    total = 0;
+                }
+                else
+                {
+                    foreach (Review review in Reviewlist)
+                    {
+                        total += review.Rating;
+                        total /= Reviewlist.Count();
+                    }
                 }
 
-            return total /= Reviewlist.Count();
+
+                return total;
             }
             set { }
         }

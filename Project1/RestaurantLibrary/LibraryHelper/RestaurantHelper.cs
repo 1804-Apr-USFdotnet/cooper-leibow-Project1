@@ -3,25 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RestuarantReviewDataLayer;
+using RestaurantReviewDataLayer;
 using RestaurantLibrary.Models;
 using RestaurantLibrary.LibraryHelper;
 
 
 namespace RestaurantLibrary.LibraryHelper
 {
-    public static class RestaurantHelper 
+    public  class RestaurantHelper 
     {
 
         // parameter is the EF Restuarant model
-        public static RestaurantLibrary.Models.Restaurant DataToLibrary(RestuarantReviewDataLayer.Restaurant data)
+        public  RestaurantLibrary.Models.Restaurant DataToLibrary(RestaurantReviewDataLayer.Restaurant data)
         {
             List<RestaurantLibrary.Models.Review> emptyList = new List<RestaurantLibrary.Models.Review>();
+            ReviewHelper reviewHelper = new ReviewHelper();
+
 
             // convert data Review to model Review
-            foreach (RestuarantReviewDataLayer.Review rev in data.Reviews)
+            foreach (RestaurantReviewDataLayer.Review rev in data.Reviews)
             {
-                emptyList.Add(ReviewHelper.DataToLibrary(rev));
+                emptyList.Add(reviewHelper.DataToLibrary(rev));
             }
 
             var libModel = new RestaurantLibrary.Models.Restaurant()
@@ -38,21 +40,33 @@ namespace RestaurantLibrary.LibraryHelper
             return libModel;
         }
 
-        //public static RestuarantReviewDataLayer.Restaurant LibraryToData(RestaurantLibrary.Models.Restaurant libraryRes)
-        //{
-        //    List<RestuarantReviewDataLayer.Restaurant> emptyList = new List<RestuarantReviewDataLayer.Restaurant>();
+        public  RestaurantReviewDataLayer.Restaurant LibraryToData(RestaurantLibrary.Models.Restaurant data)
+        {
+            List<RestaurantReviewDataLayer.Review> emptyList = new List<RestaurantReviewDataLayer.Review>();
+            ReviewHelper reviewHelper = new ReviewHelper();
 
-        //    foreach (RestaurantLibrary.Models.Review modelRev in libraryRes.Reviewlist)
-        //    {
-        //        emptyList.Add(ReviewHelper.LibraryToData(modelRev));
-        //    }
+            // convert data Review to model Review
+            if(data.Reviewlist!= null)
+            {
+                foreach (RestaurantLibrary.Models.Review rev in data.Reviewlist)
+                {
+                    emptyList.Add(reviewHelper.LibraryToData(rev));
+                }
+            }
+          
 
-        //    var dataModel = new RestuarantReviewDataLayer.Restaurant()
-        //    {
-        //        Name = libraryRes.Name,
-        //        location = libraryRes.Location
-        //    };
-        //    return dataModel;
-        //}
+            var libModel = new RestaurantReviewDataLayer.Restaurant()
+            {
+                Name = data.Name,
+                location = data.Location,
+                Reviews = emptyList,
+                ID = data.id
+
+
+
+            };
+
+            return libModel;
+        }
     }
 }

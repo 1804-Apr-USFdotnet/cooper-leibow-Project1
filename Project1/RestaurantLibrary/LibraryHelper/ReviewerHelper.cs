@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RestuarantReviewDataLayer;
+using RestaurantReviewDataLayer;
 using RestaurantLibrary.LibraryHelper;
 
 
 namespace RestaurantLibrary.LibraryHelper
 {
-    public static class ReviewerHelper
+    public  class ReviewerHelper
     {
         // parameter is the EF Restuarant model
-        public static RestaurantLibrary.Models.Reviewer DataToLibrary(RestuarantReviewDataLayer.Reviewer reviewer)
+        public  RestaurantLibrary.Models.Reviewer DataToLibrary(RestaurantReviewDataLayer.Reviewer reviewer)
         {
             var libModel = new RestaurantLibrary.Models.Reviewer()
             {
@@ -25,9 +25,9 @@ namespace RestaurantLibrary.LibraryHelper
             return libModel;
         }
 
-        public static RestuarantReviewDataLayer.Reviewer LibraryToData(RestaurantLibrary.Models.Reviewer libraryReviewer)
+        public  RestaurantReviewDataLayer.Reviewer LibraryToData(RestaurantLibrary.Models.Reviewer libraryReviewer)
         {
-            var dataModel = new RestuarantReviewDataLayer.Reviewer()
+            var dataModel = new RestaurantReviewDataLayer.Reviewer()
             {
                 name = libraryReviewer.name,
                 email = libraryReviewer.email

@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RestaurantLibrary.LibraryHelper;
 
 namespace RestaurantLibrary.LibraryHelper
 {
-    public static class ReviewHelper
+    public class ReviewHelper
     {
+        ReviewerHelper reviewerHelper = new ReviewerHelper();
+
         // parameter is the EF Restuarant model
-        public static RestaurantLibrary.Models.Review DataToLibrary(RestuarantReviewDataLayer.Review review)
+        public  RestaurantLibrary.Models.Reviewer DataToLibrary(RestaurantReviewDataLayer.Reviewer reviewer)
         {
-            var libModel = new RestaurantLibrary.Models.Review()
+            var libModel = new RestaurantLibrary.Models.Reviewer()
             {
-                Content = review.content,
-                Rating = review.rating,
-                reviewer = ReviewerHelper.DataToLibrary(review.Reviewer)
+               email = reviewer.email,
+               name = reviewer.name
 
 
             };
@@ -23,13 +25,13 @@ namespace RestaurantLibrary.LibraryHelper
             return libModel;
         }
 
-        public static RestuarantReviewDataLayer.Review LibraryToData(RestaurantLibrary.Models.Review libraryReview)
+        public  RestaurantReviewDataLayer.Review LibraryToData(RestaurantLibrary.Models.Review libraryReview)
         {
-            var dataModel = new RestuarantReviewDataLayer.Review()
+            var dataModel = new RestaurantReviewDataLayer.Review()
             {
                 content = libraryReview.Content,
                 rating = libraryReview.Rating,
-                Reviewer = ReviewerHelper.LibraryToData(libraryReview.reviewer)
+                Reviewer = reviewerHelper.LibraryToData(libraryReview.reviewer)
 
             };
             return dataModel;

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RestuarantReviewDataLayer
+namespace RestaurantReviewDataLayer
 {
     using System;
     using System.Collections.Generic;

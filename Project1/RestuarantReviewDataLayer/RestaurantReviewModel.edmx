@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RestaurantDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RestaurantDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Restaurant">
           <Key>
             <PropertyRef Name="ID" />
@@ -31,8 +31,10 @@
           <Property Name="name" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="40" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Review__restaura__68487DD7">
-          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+        <Association Name="FK__Review__restaura__75A278F5">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Restaurant">
@@ -43,8 +45,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__reviewer__693CA210">
-          <End Role="Reviewer" Type="Self.Reviewer" Multiplicity="0..1" />
+        <Association Name="FK__Review__reviewer__76969D2E">
+          <End Role="Reviewer" Type="Self.Reviewer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Reviewer">
@@ -59,17 +63,16 @@
           <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="Business" store:Type="Tables" />
           <EntitySet Name="Review" EntityType="Self.Review" Schema="Business" store:Type="Tables" />
           <EntitySet Name="Reviewer" EntityType="Self.Reviewer" Schema="Business" store:Type="Tables" />
-          <AssociationSet Name="FK__Review__restaura__68487DD7" Association="Self.FK__Review__restaura__68487DD7">
+          <AssociationSet Name="FK__Review__restaura__75A278F5" Association="Self.FK__Review__restaura__75A278F5">
             <End Role="Restaurant" EntitySet="Restaurant" />
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
-          <AssociationSet Name="FK__Review__reviewer__693CA210" Association="Self.FK__Review__reviewer__693CA210">
+          <AssociationSet Name="FK__Review__reviewer__76969D2E" Association="Self.FK__Review__reviewer__76969D2E">
             <End Role="Reviewer" EntitySet="Reviewer" />
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RestaurantDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

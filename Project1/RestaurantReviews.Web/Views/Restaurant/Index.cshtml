@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    @model RestaurantLibrary.Models.Restaurant
+
+
+}
+
+<h2>Index</h2>
+
+<div>
+ 
+    <a href="topthree" class="btn btn-default">Top 3</a>
+    <a href="ascending" class="btn btn-default">Order by name ascending</a>
+    <a href="descending" class="btn btn-default">Order by name descending</a>
+
+
+
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Rating</th>
+
+            <th scope="col">Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{ foreach (RestaurantLibrary.Models.Restaurant res in ViewBag.restaurants)
+            {
+
+
+                <tr>
+                    <th scope="row">@res.id </th>
+                    <td>@res.Name @Url.Action("Show", "Restaurant", new { id = @res.id }, @res.Name)</td>
+                    <td>@res.Location</td>
+                    <td>@res.AverageRating</td>
+                    <td>
+                        <button type="button" onclick="location.href='@Url.Action("Edit", "Restaurant", new { id = @res.id })'" class="btn btn-primary">Edit</button>
+                        <button type="button" onclick="location.href='@Url.Action("DeleteConfirmation", "Restaurant", new { id = @res.id })'" class="btn btn-danger">Delete</button>
+
+                    </td>
+                </tr>
+            }
+        }
+
+
+    </tbody>
+</table>
+

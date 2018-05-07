@@ -8,10 +8,23 @@ namespace RestaurantReviews.Web.Controllers
 {
     public class ReviewerController : Controller
     {
-        // GET: Reviewer
-        public ActionResult Index()
+        RestaurantLibrary.CRUD.ReviewerCRUD reviewerCrud = new RestaurantLibrary.CRUD.ReviewerCRUD();
+
+      
+
+        [HttpGet]
+        [Route("reviewer/new")]
+        public ActionResult New()
         {
-            return View();
+            return View("new");
+        }
+
+        [HttpPost]
+        [Route("reviewer/create")]
+        public ActionResult Create(RestaurantLibrary.Models.Reviewer reviewer)
+        {
+            reviewerCrud.AddReview(reviewer);
+            return RedirectToAction("Index");
         }
     }
 }

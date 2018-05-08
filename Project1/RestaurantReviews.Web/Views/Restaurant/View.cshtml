@@ -9,7 +9,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @ViewBag.restaurant.Name
         </dd>
 
         <dt>
@@ -17,7 +17,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Location)
+            @ViewBag.restaurant.Location
         </dd>
 
         <dt>
@@ -25,12 +25,13 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AverageRating)
+            @ViewBag.restaurant.AverageRating
         </dd>
+       
 
     </dl>
+    <div>
+        @{ Html.RenderPartial("_New");}
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

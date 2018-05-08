@@ -12,6 +12,7 @@ namespace RestaurantLibrary.Models
     {
         public string name;
         public string email;
+        int id { get; set; }
 
 
         public Reviewer(string name, string email)

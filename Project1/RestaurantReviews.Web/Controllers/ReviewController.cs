@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NLog;
 
 namespace RestaurantReviews.Web.Controllers
 {
@@ -12,53 +13,48 @@ namespace RestaurantReviews.Web.Controllers
 
         
 
-        [HttpGet]
-        [Route("restaurant/details/{}")]
-        public ActionResult New(int restaurant_id)
-        {
-            
-        }
+       
 
         [HttpPost]
-        [Route("restuarant/create")]
-        public ActionResult Create(RestaurantLibrary.Models.Restaurant res)
+        [Route("review/create")]
+        public ActionResult Create(RestaurantLibrary.Models.Review rev)
         {
-            resCrud.AddRestaurant(res);
+            revCrud.AddReview(rev);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
-        [Route("restaurant/show/{id}")]
+        [Route("review/show/{id}")]
         public ViewResult Show(int id)
         {
-            Restaurant res = resCrud.GetRestaurantById(id);
-            return View(res);
+            RestaurantLibrary.Models.Review rev = revCrud.GetReviewById(id);
+            return View(rev);
 
         }
         [HttpGet]
-        [Route("restaurant/edit/{id}")]
+        [Route("review/edit/{id}")]
         public ViewResult RenderEdit(int id)
         {
-            Restaurant res = resCrud.GetRestaurantById(id);
-            ViewBag.restaurant = res;
+            RestaurantLibrary.Models.Review rev = revCrud.GetReviewById(id);
+            ViewBag.review = rev;
             return View("edit");
 
         }
 
         [HttpPost]
-        [Route("restaurant/edit/{id}")]
-        public ActionResult Edit(Restaurant res)
+        [Route("review/edit/{id}")]
+        public ActionResult Edit(RestaurantLibrary.Models.Review rev, int id)
         {
-            resCrud.UpdateRestaurantById(res);
+            revCrud.GetReviewById(id);
             return RedirectToAction("index");
         }
 
         [HttpGet]
-        [Route("restaurant/confirmation/{id}")]
+        [Route("review/confirmation/{id}")]
         public ActionResult DeleteConfirmation(int id)
         {
-            Restaurant res = resCrud.GetRestaurantById(id);
-            ViewBag.restaurant = res;
+            RestaurantLibrary.Models.Review rev = revCrud.GetReviewById(id);
+            ViewBag.review = rev;
             return PartialView("_DeleteConfirmation");
 
 
@@ -67,13 +63,13 @@ namespace RestaurantReviews.Web.Controllers
 
 
         [HttpPost]
-        [Route("restaurant/delete/{id}")]
+        [Route("review/delete/{id}")]
         public ActionResult Delete(int id)
         {
 
             try
             {
-                resCrud.DeleteRestaurantById(id);
+                revCrud.DeleteReviewById(id);
             }
             catch (NullReferenceException e)
             {

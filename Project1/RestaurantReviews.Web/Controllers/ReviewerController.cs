@@ -21,10 +21,13 @@ namespace RestaurantReviews.Web.Controllers
 
         [HttpPost]
         [Route("reviewer/create")]
-        public ActionResult Create(RestaurantLibrary.Models.Reviewer reviewer)
+        public ActionResult Create(FormCollection form)
         {
+            RestaurantLibrary.Models.Reviewer reviewer = new RestaurantLibrary.Models.Reviewer();
+            reviewer.name = form["name"];
+            reviewer.email = form["email"];
             reviewerCrud.AddReview(reviewer);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Restaurant");
         }
     }
 }

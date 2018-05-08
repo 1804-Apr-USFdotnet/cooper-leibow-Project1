@@ -51,9 +51,11 @@ namespace RestaurantReviews.Web.Controllers
         {
             Restaurant res = resCrud.GetRestaurantById(id);
             RestaurantLibrary.CRUD.ReviewerCRUD reviewerCRUD = new RestaurantLibrary.CRUD.ReviewerCRUD();
+
             ViewBag.reviewers = reviewerCRUD.GetAllReviewers();
             ViewBag.restaurant_id = id;
-            return View("show");
+            ViewBag.restaurant = res;
+            return View("view");
 
         }
         [HttpGet]

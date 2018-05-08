@@ -43,19 +43,19 @@ namespace RestaurantLibrary.CRUD
 
         public void AddReview(RestaurantLibrary.Models.Review rev)
         {
-            RestaurantReviewDataLayer.Review dalRev = reviewHelper.LibraryToData(res);
-            dalCrud.AddRestaurant(dalRest);
+            RestaurantReviewDataLayer.Review dalRev = reviewHelper.LibraryToData(rev);
+            dalCrud.AddReview(dalRev);
         }
 
-        public void UpdateRestaurantById(RestaurantLibrary.Models.Restaurant res)
+        public void UpdateReviewById(RestaurantLibrary.Models.Review rev)
         {
-            RestaurantReviewDataLayer.Restaurant dalRest = restHelper.LibraryToData(res);
-            dalCrud.UpdateRestaurantById(dalRest);
+            RestaurantReviewDataLayer.Review dalRev = reviewHelper.LibraryToData(rev);
+            dalCrud.UpdateReviewById(dalRev);
         }
 
-        public void DeleteRestaurantById(int id)
+        public void DeleteReviewById(int id)
         {
-            dalCrud.DeleteRestaurantById(id);
+            dalCrud.DeleteReviewById(id);
         }
     }
 }

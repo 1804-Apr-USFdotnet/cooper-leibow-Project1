@@ -12,13 +12,13 @@ namespace RestaurantLibrary.LibraryHelper
         ReviewerHelper reviewerHelper = new ReviewerHelper();
 
         // parameter is the EF Restuarant model
-        public  RestaurantLibrary.Models.Reviewer DataToLibrary(RestaurantReviewDataLayer.Reviewer reviewer)
+        public  RestaurantLibrary.Models.Review DataToLibrary(RestaurantReviewDataLayer.Review review)
         {
-            var libModel = new RestaurantLibrary.Models.Reviewer()
-            {
-               email = reviewer.email,
-               name = reviewer.name
-
+            var libModel = new RestaurantLibrary.Models.Review()
+            { 
+                Rating = review.rating,
+                Content = review.content,
+                reviewer = reviewerHelper.DataToLibrary(review.Reviewer)
 
             };
 

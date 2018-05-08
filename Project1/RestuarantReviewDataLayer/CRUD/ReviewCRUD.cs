@@ -44,7 +44,7 @@ namespace RestaurantReviewDataLayer.CRUD
 
         }
 
-        public void DeleteRestaurantById(int id)
+        public void DeleteReviewById(int id)
         {
 
             Review rev = _db.Reviews.Find(id);

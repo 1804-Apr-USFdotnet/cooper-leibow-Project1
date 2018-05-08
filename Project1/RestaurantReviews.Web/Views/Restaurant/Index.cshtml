@@ -36,8 +36,7 @@
 
                 <tr>
                     <th scope="row">@res.id </th>
-                    <td><a href=@string.Format("/restaurant/show/{0}", @res.id)>@res.Name</a>
-        @*@Url.Action("Show", "Restaurant", new { id = @res.id }, @res.Name)*@</td>
+                    <td><a href=@string.Format("/restaurant/show/{0}", @res.id)>@res.Name</a></td>
                     <td>@res.Location</td>
                     <td>@res.AverageRating</td>
                     <td>

@@ -15,7 +15,8 @@ namespace RestaurantLibrary.Models
         public decimal Rating { get; set; }
         public Reviewer reviewer;
         public string Content { get; set; }
-        Restaurant restaurant;
+        public Restaurant restaurant;
+        public int id { get; set; }
 
        
         public Review(decimal rating, Reviewer reviewer, string content, Restaurant restaurant)

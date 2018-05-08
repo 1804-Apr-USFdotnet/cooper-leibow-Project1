@@ -18,7 +18,9 @@ namespace RestaurantLibrary.LibraryHelper
             { 
                 Rating = review.rating,
                 Content = review.content,
-                reviewer = reviewerHelper.DataToLibrary(review.Reviewer)
+                reviewer = reviewerHelper.DataToLibrary(review.Reviewer),
+                id = review.ID
+                
 
             };
 
@@ -31,7 +33,8 @@ namespace RestaurantLibrary.LibraryHelper
             {
                 content = libraryReview.Content,
                 rating = libraryReview.Rating,
-                Reviewer = reviewerHelper.LibraryToData(libraryReview.reviewer)
+                Reviewer = reviewerHelper.LibraryToData(libraryReview.reviewer),
+                ID = libraryReview.id
 
             };
             return dataModel;

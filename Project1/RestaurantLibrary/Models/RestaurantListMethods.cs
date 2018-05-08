@@ -69,5 +69,25 @@ namespace RestaurantLibrary.Models
             Restaurant res = restaurantList.Find(r => r.id == ID);
             return res;
         }
+
+        public List<Restaurant> Search(List<Restaurant> restaurantList, string substring)
+        {
+            List<Restaurant> SortedList = new List<Restaurant>();
+            foreach (Restaurant res in restaurantList)
+            {
+                if (res.Name.ToLower().Contains(substring.ToLower()))
+                {
+                    SortedList.Add(res);
+                }
+            }
+            return SortedList;
+        }
+
+        //public IEnumerable<Review> FindReviewsWithResId(Restaurant res)
+        //{
+        //    IEnumerable<Review> revList;
+        //    revList = res.Reviewlist.Where(r => r.restaurant.id == res.id);
+        //    return revList;
+        //}
     }
 }

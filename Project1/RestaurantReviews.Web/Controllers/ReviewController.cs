@@ -1,26 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using NLog;
+using System;
 using System.Web.Mvc;
-using NLog;
 
 namespace RestaurantReviews.Web.Controllers
 {
     public class ReviewController : Controller
     {
         RestaurantLibrary.CRUD.ReviewCRUD revCrud = new RestaurantLibrary.CRUD.ReviewCRUD();
+        RestaurantLibrary.CRUD.ReviewerCRUD reviewerCrud = new RestaurantLibrary.CRUD.ReviewerCRUD();
+        RestaurantLibrary.CRUD.RestaurantCRUD restaurantCrud = new RestaurantLibrary.CRUD.RestaurantCRUD();
 
-        
 
-       
+
+
+
 
         [HttpPost]
         [Route("review/create")]
-        public ActionResult Create(RestaurantLibrary.Models.Review rev)
+        public ActionResult Create(RestaurantLibrary.Models.Review rev, FormCollection form)
         {
+            RestaurantLibrary.Models.Restaurant restaurant = restaurantCrud.GetRestaurantById(Int32.Parse(form["restaurant_id"]));
+            RestaurantLibrary.Models.Reviewer reviewer = reviewerCrud.GetReviewerById(Int32.Parse(form["reviewer_id"]));
+
+            //rev.reviewer.id = Int32.Parse(form["reviewer_id"]);
+            rev.reviewer = reviewer;
+            rev.restaurant = restaurant;
+
             revCrud.AddReview(rev);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Restaurant");
         }
 
         [HttpGet]

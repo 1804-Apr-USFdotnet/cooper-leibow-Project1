@@ -27,6 +27,12 @@ namespace RestaurantReviews.Web.Controllers
             {
                 ViewBag.restaurants = TempData["nameAscendingList"];
             }
+
+            if (TempData["search"] != null)
+            {
+                ViewBag.restaurants = TempData["search"]; 
+            }
+            
             return View();
         }
 
@@ -51,10 +57,13 @@ namespace RestaurantReviews.Web.Controllers
         {
             Restaurant res = resCrud.GetRestaurantById(id);
             RestaurantLibrary.CRUD.ReviewerCRUD reviewerCRUD = new RestaurantLibrary.CRUD.ReviewerCRUD();
+            RestaurantListMethods restListMethods = new RestaurantListMethods();
 
-            ViewBag.reviewers = reviewerCRUD.GetAllReviewers();
-            ViewBag.restaurant_id = id;
+            ViewData["reviewers"] = reviewerCRUD.GetAllReviewers();
+            ViewData["restaurant_id"] = id;
+            ViewData["restaurant_reviews"] = res.Reviewlist;
             ViewBag.restaurant = res;
+            
             return View("view");
 
         }
@@ -140,6 +149,18 @@ namespace RestaurantReviews.Web.Controllers
             TempData["nameAscendingList"] = nameAscendingList;
             return RedirectToAction("index");
         }
+
+        [HttpPost]
+        [Route("restaurant/search")]
+        public ActionResult NameDescending(FormCollection form)
+        {
+            List<Restaurant> myRest = resCrud.GetAllRestaurant();
+            List<Restaurant> searchedList = resMethods.Search(myRest, Request.Form["search_info"]);
+            TempData["search"] = searchedList;
+            return RedirectToAction("index");
+        }
+
+       
     }
 
 }

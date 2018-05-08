@@ -17,7 +17,8 @@ namespace RestaurantLibrary.LibraryHelper
             var libModel = new RestaurantLibrary.Models.Reviewer()
             {
                 name = reviewer.name,
-                email = reviewer.email
+                email = reviewer.email,
+                id = reviewer.ID
                 
                 
                 
@@ -33,7 +34,8 @@ namespace RestaurantLibrary.LibraryHelper
             var dataModel = new RestaurantReviewDataLayer.Reviewer()
             {
                 name = libraryReviewer.name,
-                email = libraryReviewer.email
+                email = libraryReviewer.email,
+                ID = libraryReviewer.id
             
             };
             return dataModel;

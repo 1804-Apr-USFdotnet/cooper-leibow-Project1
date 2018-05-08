@@ -31,7 +31,9 @@
 
     </dl>
     <div>
-        @{ Html.RenderPartial("_New");}
+        @{ Html.RenderPartial("_Reviews", ViewData);}
+
+        @{ Html.RenderPartial("_New", ViewData);}
     </div>
 </div>
 

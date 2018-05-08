@@ -1,6 +1,6 @@
 ﻿@model RestaurantLibrary.Models.Review
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("create", "review"))
 {
     @Html.AntiForgeryToken()
 
@@ -26,18 +26,19 @@
     <div class="form-group">
         <div class="col-md-10">
             <label for="exampleFormControlSelect2">Example multiple select</label>
-            <select name="reviewerId" multiple class="form-control" id="exampleFormControlSelect2">
-                @{ foreach (RestaurantLibrary.Models.Reviewer reviewer in ViewBag.reviewers)
-            {
-                <option value="@reviewer.">@reviewer.name</option>
-    }
+            <select name="reviewer_id" multiple class="form-control" id="exampleFormControlSelect2">
+                @{ foreach (RestaurantLibrary.Models.Reviewer reviewer in ViewData["reviewers"] as List<RestaurantLibrary.Models.Reviewer>)
+                    {
+                <option value="@reviewer.id">@reviewer.name</option>
+                        }
 
-                }
+                    }
             </select>
-            
+                   
         </div>
     </div>
-
+    <input type="hidden" name="restaurant_id" value="@ViewData["restaurant_id"]"/>
+                   
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

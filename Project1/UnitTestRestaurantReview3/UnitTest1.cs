@@ -81,128 +81,128 @@ namespace UnitTestRestaurantReview3
         }
 
         // Test to ensure getRestaurantById method 
-        [TestMethod]
-        public void SortRestaurantByIdTest()
-        {
-            Restaurant res1 = new Restaurant("Burger King", 1);
-            Restaurant res2 = new Restaurant("McDonalds", 2);
-            Restaurant res3 = new Restaurant("Wendys", 3);
-            List<Restaurant> myList = new List<Restaurant>();
-            myList.Add(res1);
-            myList.Add(res2);
-            myList.Add(res3);
+        //[TestMethod]
+        //public void SortRestaurantByIdTest()
+        //{
+        //    Restaurant res1 = new Restaurant("Burger King", 1);
+        //    Restaurant res2 = new Restaurant("McDonalds", 2);
+        //    Restaurant res3 = new Restaurant("Wendys", 3);
+        //    List<Restaurant> myList = new List<Restaurant>();
+        //    myList.Add(res1);
+        //    myList.Add(res2);
+        //    myList.Add(res3);
 
-            Restaurant foundRes = RestaurantListMethods.GetRestaurantById(myList, 1);
+        //    Restaurant foundRes = RestaurantListMethods.GetRestaurantById(myList, 1);
             
          
-            string expected = "Burger King";
+        //    string expected = "Burger King";
 
-            string actual = foundRes.Name;
+        //    string actual = foundRes.Name;
 
-            Assert.AreEqual(actual, expected);
-
-
-        }
-
-        [TestMethod]
-        public void SortByNameAscending()
-        {
-            Restaurant res1 = new Restaurant("Burger King", 1);
-            Restaurant res2 = new Restaurant("McDonalds", 2);
-            Restaurant res3 = new Restaurant("Wendys", 3);
-            Restaurant res4 = new Restaurant("Checkers", 4);
-
-            Reviewer reviewer = new Reviewer("Cooper", "leibowcooper@gmail.com");
-            reviewer.MakeReview(4.35m, res1, "I really liked it");
-            reviewer.MakeReview(3.67m, res2, "It was ok");
-            reviewer.MakeReview(4.87m, res3, "Sooooo good");
-            reviewer.MakeReview(2.34m, res4, "holy crap so bad");
+        //    Assert.AreEqual(actual, expected);
 
 
+        //}
 
-            List<Restaurant> myList = new List<Restaurant>();
-            myList.Add(res1);
-            myList.Add(res2);
-            myList.Add(res3);
-            myList.Add(res4);
+        //[TestMethod]
+        //public void SortByNameAscending()
+        //{
+        //    Restaurant res1 = new Restaurant("Burger King", 1);
+        //    Restaurant res2 = new Restaurant("McDonalds", 2);
+        //    Restaurant res3 = new Restaurant("Wendys", 3);
+        //    Restaurant res4 = new Restaurant("Checkers", 4);
 
-            List<Restaurant> sortedList = RestaurantListMethods.SortByNameAscending(myList);
-
-            int expected = 1;
-
-            int actual = sortedList.IndexOf(res4);
-
-
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void SortByNameDescendingTest()
-        {
-            Restaurant res1 = new Restaurant("Burger King", 1);
-            Restaurant res2 = new Restaurant("McDonalds", 2);
-            Restaurant res3 = new Restaurant("Wendys", 3);
-            Restaurant res4 = new Restaurant("Checkers", 4);
-
-            Reviewer reviewer = new Reviewer("Cooper", "leibowcooper@gmail.com");
-            reviewer.MakeReview(4.35m, res1, "I really liked it");
-            reviewer.MakeReview(3.67m, res2, "It was ok");
-            reviewer.MakeReview(4.87m, res3, "Sooooo good");
-            reviewer.MakeReview(2.34m, res4, "holy crap so bad");
+        //    Reviewer reviewer = new Reviewer("Cooper", "leibowcooper@gmail.com");
+        //    reviewer.MakeReview(4.35m, res1, "I really liked it");
+        //    reviewer.MakeReview(3.67m, res2, "It was ok");
+        //    reviewer.MakeReview(4.87m, res3, "Sooooo good");
+        //    reviewer.MakeReview(2.34m, res4, "holy crap so bad");
 
 
 
-            List<Restaurant> myList = new List<Restaurant>();
-            myList.Add(res1);
-            myList.Add(res2);
-            myList.Add(res3);
-            myList.Add(res4);
+        //    List<Restaurant> myList = new List<Restaurant>();
+        //    myList.Add(res1);
+        //    myList.Add(res2);
+        //    myList.Add(res3);
+        //    myList.Add(res4);
 
-            List<Restaurant> sortedList = RestaurantListMethods.SortByNameDescending(myList);
+        //    List<Restaurant> sortedList = RestaurantListMethods.SortByNameAscending(myList);
 
-            int expected = 1;
+        //    int expected = 1;
 
-            int actual = sortedList.IndexOf(res2);
-
-
-            Assert.AreEqual(expected, actual);
+        //    int actual = sortedList.IndexOf(res4);
 
 
-        }
+        //    Assert.AreEqual(expected, actual);
+        //}
 
-        [TestMethod]
-        public void TopThreeTest()
-        {
-            Restaurant res1 = new Restaurant("Burger King", 1);
-            Restaurant res2 = new Restaurant("McDonalds", 2);
-            Restaurant res3 = new Restaurant("Wendys", 3);
-            Restaurant res4 = new Restaurant("Checkers", 4);
+        //[TestMethod]
+        //public void SortByNameDescendingTest()
+        //{
+        //    Restaurant res1 = new Restaurant("Burger King", 1);
+        //    Restaurant res2 = new Restaurant("McDonalds", 2);
+        //    Restaurant res3 = new Restaurant("Wendys", 3);
+        //    Restaurant res4 = new Restaurant("Checkers", 4);
 
-            Reviewer reviewer = new Reviewer("Cooper", "leibowcooper@gmail.com");
-            reviewer.MakeReview(4.35m, res1, "I really liked it");
-            reviewer.MakeReview(3.67m, res2, "It was ok");
-            reviewer.MakeReview(4.87m, res3, "Sooooo good");
-            reviewer.MakeReview(2.34m, res4, "holy crap so bad");
+        //    Reviewer reviewer = new Reviewer("Cooper", "leibowcooper@gmail.com");
+        //    reviewer.MakeReview(4.35m, res1, "I really liked it");
+        //    reviewer.MakeReview(3.67m, res2, "It was ok");
+        //    reviewer.MakeReview(4.87m, res3, "Sooooo good");
+        //    reviewer.MakeReview(2.34m, res4, "holy crap so bad");
 
 
 
-            List<Restaurant> myList = new List<Restaurant>();
-            myList.Add(res1);
-            myList.Add(res2);
-            myList.Add(res3);
-            myList.Add(res4);
+        //    List<Restaurant> myList = new List<Restaurant>();
+        //    myList.Add(res1);
+        //    myList.Add(res2);
+        //    myList.Add(res3);
+        //    myList.Add(res4);
 
-            List<Restaurant> sortedList = RestaurantListMethods.TopThree(myList);
+        //    List<Restaurant> sortedList = RestaurantListMethods.SortByNameDescending(myList);
+
+        //    int expected = 1;
+
+        //    int actual = sortedList.IndexOf(res2);
 
 
-            int expected = 0;
-
-            int actual = sortedList.IndexOf(res3);
+        //    Assert.AreEqual(expected, actual);
 
 
-            Assert.AreEqual(expected, actual);
+        //}
 
-        }
+        //[TestMethod]
+        //public void TopThreeTest()
+        //{
+        //    Restaurant res1 = new Restaurant("Burger King", 1);
+        //    Restaurant res2 = new Restaurant("McDonalds", 2);
+        //    Restaurant res3 = new Restaurant("Wendys", 3);
+        //    Restaurant res4 = new Restaurant("Checkers", 4);
+
+        //    Reviewer reviewer = new Reviewer("Cooper", "leibowcooper@gmail.com");
+        //    reviewer.MakeReview(4.35m, res1, "I really liked it");
+        //    reviewer.MakeReview(3.67m, res2, "It was ok");
+        //    reviewer.MakeReview(4.87m, res3, "Sooooo good");
+        //    reviewer.MakeReview(2.34m, res4, "holy crap so bad");
+
+
+
+        //    List<Restaurant> myList = new List<Restaurant>();
+        //    myList.Add(res1);
+        //    myList.Add(res2);
+        //    myList.Add(res3);
+        //    myList.Add(res4);
+
+        //    List<Restaurant> sortedList = RestaurantListMethods.TopThree(myList);
+
+
+        //    int expected = 0;
+
+        //    int actual = sortedList.IndexOf(res3);
+
+
+        //    Assert.AreEqual(expected, actual);
+
+        //}
 
         [TestMethod]
         public void GetAllReviewsTest()

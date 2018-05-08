@@ -37,19 +37,18 @@
 @using (Html.BeginForm("create", "reviewer"))
 {
 @Html.AntiForgeryToken()
-
+<h1 class="display-3">Add Reviewer</h1>
     <div class="form-group">
-        <label for="name">Namel</label>
-        <input name="name" type="text" class="form-control" placeholder="Example input">
+        <label for="name">Name</label>
+        <input name="name" type="text" class="form-control" placeholder="Name">
     </div>
     <div class="form-group">
-        <label for="email">Another label</label>
-        <input name="email" type="email" class="form-control" placeholder="Another input">
+        <label for="email">Email</label>
+        <input name="email" type="email" class="form-control" placeholder="Email">
     </div>
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+        
             <input type="submit" value="Create" class="btn btn-default" />
-        </div>
     </div>
 
 }

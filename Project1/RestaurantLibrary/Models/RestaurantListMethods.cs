@@ -31,12 +31,14 @@ namespace RestaurantLibrary.Models
         
 
 
-        public  List<Restaurant> TopThree(List<Restaurant> restaurantList)
+        public  IEnumerable<Restaurant> TopThree(List<Restaurant> restaurantList)
         {
             try
             {
                 List<Restaurant> myList = restaurantList.OrderBy(o => o.AverageRating).Reverse().ToList();
-                return myList;
+                return myList.Take(3);
+               
+            
             }
 
 

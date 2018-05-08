@@ -125,7 +125,7 @@ namespace RestaurantReviews.Web.Controllers
         public ActionResult TopThree()
         {
             List<Restaurant> myRest = resCrud.GetAllRestaurant();
-            List<Restaurant> topThreeList = resMethods.TopThree(myRest);
+            IEnumerable<Restaurant> topThreeList = resMethods.TopThree(myRest);
             TempData["topThreeList"] = topThreeList;
             return RedirectToAction("index");
         }

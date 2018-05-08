@@ -4,12 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestaurantLibrary.Models;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace RestaurantLibrary.Models
 {
     public class Restaurant
     {
+        [MaxLength(30)]
+        [Required]
         public string Name { get; set; }
+
+        [Required]
         public string Location { get; set; }
         public List<Review> Reviewlist;
         public int id { get; set; } 

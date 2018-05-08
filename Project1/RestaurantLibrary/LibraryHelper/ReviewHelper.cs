@@ -10,6 +10,7 @@ namespace RestaurantLibrary.LibraryHelper
     public class ReviewHelper
     {
         ReviewerHelper reviewerHelper = new ReviewerHelper();
+        RestaurantHelper restaurantHelper = new RestaurantHelper();
 
         // parameter is the EF Restuarant model
         public  RestaurantLibrary.Models.Review DataToLibrary(RestaurantReviewDataLayer.Review review)
@@ -19,6 +20,8 @@ namespace RestaurantLibrary.LibraryHelper
                 Rating = review.rating,
                 Content = review.content,
                 reviewer = reviewerHelper.DataToLibrary(review.Reviewer),
+                restaurant_id = (int)review.restaurant_id,
+              
                 id = review.ID
                 
 
@@ -33,8 +36,10 @@ namespace RestaurantLibrary.LibraryHelper
             {
                 content = libraryReview.Content,
                 rating = libraryReview.Rating,
-                Reviewer = reviewerHelper.LibraryToData(libraryReview.reviewer),
-                ID = libraryReview.id
+                ID = libraryReview.id,
+                restaurant_id = libraryReview.restaurant.id,
+                reviewer_id = libraryReview.reviewer.id
+
 
             };
             return dataModel;

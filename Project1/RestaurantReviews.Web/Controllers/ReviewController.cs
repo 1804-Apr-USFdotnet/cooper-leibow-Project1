@@ -19,14 +19,20 @@ namespace RestaurantReviews.Web.Controllers
         [Route("review/create")]
         public ActionResult Create(RestaurantLibrary.Models.Review rev, FormCollection form)
         {
-            RestaurantLibrary.Models.Restaurant restaurant = restaurantCrud.GetRestaurantById(Int32.Parse(form["restaurant_id"]));
-            RestaurantLibrary.Models.Reviewer reviewer = reviewerCrud.GetReviewerById(Int32.Parse(form["reviewer_id"]));
+            RestaurantLibrary.Models.Review review = new RestaurantLibrary.Models.Review();
+            review.Rating = Decimal.Parse(Request.Form["rating"]);
+            review.Content = Request.Form["content"];
+            review.restaurant = restaurantCrud.GetRestaurantById(Int32.Parse(Request.Form["restaurant_id"]));
+            review.reviewer = reviewerCrud.GetReviewerById(Int32.Parse(Request.Form["reviewer_id"]));
+
+            //RestaurantLibrary.Models.Restaurant restaurant = restaurantCrud.GetRestaurantById(Int32.Parse(form["restaurant_id"]));
+            //RestaurantLibrary.Models.Reviewer reviewer = reviewerCrud.GetReviewerById(Int32.Parse(form["reviewer_id"]));
 
             //rev.reviewer.id = Int32.Parse(form["reviewer_id"]);
-            rev.reviewer = reviewer;
-            rev.restaurant = restaurant;
+            //rev.reviewer = reviewer;
+            //rev.restaurant = restaurant;
 
-            revCrud.AddReview(rev);
+            revCrud.AddReview(review);
             return RedirectToAction("Index", "Restaurant");
         }
 
@@ -44,16 +50,25 @@ namespace RestaurantReviews.Web.Controllers
         {
             RestaurantLibrary.Models.Review rev = revCrud.GetReviewById(id);
             ViewBag.review = rev;
+            ViewData["restaurant_id"] = rev.restaurant_id;
+            
+            ViewData["reviewer_id"] = rev.reviewer_id;
             return View("edit");
 
         }
 
         [HttpPost]
         [Route("review/edit/{id}")]
-        public ActionResult Edit(RestaurantLibrary.Models.Review rev, int id)
+        public ActionResult Edit(RestaurantLibrary.Models.Review rev, FormCollection form)
+
         {
-            revCrud.GetReviewById(id);
-            return RedirectToAction("index");
+            RestaurantLibrary.Models.Review review = revCrud.GetReviewById(rev.id);
+            review.Rating = Decimal.Parse(Request.Form["rating"]);
+            review.Content = Request.Form["content"];
+            review.restaurant = restaurantCrud.GetRestaurantById(Int32.Parse(Request.Form["restaurant_id"]));
+            review.reviewer = reviewerCrud.GetReviewerById(Int32.Parse(Request.Form["reviewer_id"]));
+            revCrud.UpdateReviewById(review);
+            return RedirectToAction("index", "restaurant");
         }
 
         [HttpGet]

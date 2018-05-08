@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestaurantLibrary.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace RestaurantLibrary.Models
 {
@@ -12,10 +13,17 @@ namespace RestaurantLibrary.Models
 
 
         // has a rating and other relevant data(e.g.reviewer name)
+        [Range(typeof(decimal), "0", "5")]
+        [Required]
         public decimal Rating { get; set; }
         public Reviewer reviewer;
+        public int reviewer_id { get; set; }
+
+        [MaxLength(500)]
+        [Required]
         public string Content { get; set; }
         public Restaurant restaurant;
+        public int restaurant_id { get; set; }
         public int id { get; set; }
 
        

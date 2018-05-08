@@ -14,30 +14,29 @@ namespace RestaurantLibrary.LibraryHelper
         // parameter is the EF Restuarant model
         public  RestaurantLibrary.Models.Reviewer DataToLibrary(RestaurantReviewDataLayer.Reviewer reviewer)
         {
-            var libModel = new RestaurantLibrary.Models.Reviewer()
-            {
-                name = reviewer.name,
-                email = reviewer.email,
-                id = reviewer.ID
-                
-                
-                
+            //var libModel = new RestaurantLibrary.Models.Reviewer()
+            //{
+            //    name = reviewer.name,
+            //    email = reviewer.email,
+            //    id = reviewer.ID
 
-
-            };
+            //};
+            var libModel = new RestaurantLibrary.Models.Reviewer();
+            libModel.name = reviewer.name;
+            libModel.email = reviewer.email;
+            libModel.id = reviewer.ID;
 
             return libModel;
         }
 
         public  RestaurantReviewDataLayer.Reviewer LibraryToData(RestaurantLibrary.Models.Reviewer libraryReviewer)
         {
-            var dataModel = new RestaurantReviewDataLayer.Reviewer()
-            {
-                name = libraryReviewer.name,
-                email = libraryReviewer.email,
-                ID = libraryReviewer.id
+            var dataModel = new RestaurantReviewDataLayer.Reviewer();
+            dataModel.email = libraryReviewer.email;
+            dataModel.name = libraryReviewer.name;
+            dataModel.ID = libraryReviewer.id;
             
-            };
+       
             return dataModel;
         }
     }

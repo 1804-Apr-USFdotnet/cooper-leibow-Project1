@@ -216,6 +216,8 @@
     <Content Include="Views\Shared\_New.cshtml" />
     <Content Include="Views\Reviewer\New.cshtml" />
     <Content Include="Views\Shared\_Reviews.cshtml" />
+    <Content Include="Views\Shared\View.cshtml" />
+    <Content Include="Views\Shared\_DeleteConfirmationReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

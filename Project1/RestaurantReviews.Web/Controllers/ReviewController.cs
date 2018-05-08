@@ -77,7 +77,7 @@ namespace RestaurantReviews.Web.Controllers
         {
             RestaurantLibrary.Models.Review rev = revCrud.GetReviewById(id);
             ViewBag.review = rev;
-            return PartialView("_DeleteConfirmation");
+            return PartialView("_DeleteConfirmationReview");
 
 
         }
@@ -101,7 +101,7 @@ namespace RestaurantReviews.Web.Controllers
 
 
             }
-            return RedirectToAction("index");
+            return RedirectToAction("index", "restaurant");
         }
 
         

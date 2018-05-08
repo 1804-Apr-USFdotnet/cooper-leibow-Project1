@@ -62,6 +62,7 @@ namespace RestaurantReviews.Web.Controllers
             ViewData["reviewers"] = reviewerCRUD.GetAllReviewers();
             ViewData["restaurant_id"] = id;
             ViewData["restaurant_reviews"] = res.Reviewlist;
+            ViewData["restaurant"] = res;
             ViewBag.restaurant = res;
             
             return View("view");

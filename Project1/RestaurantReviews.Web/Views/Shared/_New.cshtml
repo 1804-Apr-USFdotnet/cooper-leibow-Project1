@@ -5,7 +5,7 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Review</h4>
+    <h4 class="display-1">Add a review</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
@@ -24,9 +24,9 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-10">
-            <label for="exampleFormControlSelect2">Example multiple select</label>
-            <select name="reviewer_id" multiple class="form-control" id="exampleFormControlSelect2">
+        <div class="col-md-8">
+            <label for="reviewer_id">Reviewer</label>
+            <select name="reviewer_id" multiple class="form-control">
                 @{ foreach (RestaurantLibrary.Models.Reviewer reviewer in ViewData["reviewers"] as List<RestaurantLibrary.Models.Reviewer>)
                     {
                 <option value="@reviewer.id">@reviewer.name</option>
